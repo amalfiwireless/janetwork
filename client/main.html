@@ -1,0 +1,88 @@
+<template name="main">
+  <!-- {{> loginRegisterModal}} -->
+  {{#unless Template.subscriptionsReady}}
+    {{> loadingScreen}}
+  {{else}}
+    <div id="wrapper">
+        <!-- Header -->
+        <header id="header" style="padding: 2em 5em 3em 5em">
+            <!-- <span class="logo"><img src="/images/logo.png" style="height:15%;width:15%;" alt="" /> -->
+          <!-- </span> -->
+            <a href="/">
+              <h1 style="font-size: 3.25em;margin:0 0 0.25em 0;">Jane Network</h1>
+              <!-- <h5 style="margin:0!important;float:right;">by TGID</h5> -->
+            </a>
+            {{> Template.dynamic template=topbar}}
+        </header>
+
+        <!-- Nav -->
+        <nav id="nav">
+            <ul>
+                {{#unless currentUser}}
+                <li><a href="/" name="#header" class="active">Join Us!</a></li>
+                {{else}} {{/unless}}
+                <li><a href="/students" onclick="scroll(0,0)">Mary</a></li>
+                <li><a href="/parents" onclick="scroll(0,0)">Jane</a></li>
+                <li><a href="/mentors" onclick="scroll(0,0)">Stories</a></li>
+                <li><a href=/pricing onclick="scroll(0,0)">Services</a></li>
+                <li><a href="/about" onclick="scroll(0,0)">The Team</a></li>
+                {{#if currentUser}}
+                  {{> headerButtonTemplates}}
+                <li><a class="logout-header" style="background:#7b3b96; color:#FFFFFF">Logout</a></li>
+                {{else}}
+                <li><a href="/login" style="background:#af2f73; color:#FFFFFF" onclick="scroll(0,0)">Login</a></li>
+                <li><a href="/register" style="background:#7b3b96; color:#FFFFFF" onclick="scroll(0,0)">Register</a></li>
+                {{/if}}
+            </ul>
+        </nav>
+
+        <!-- Main -->
+        <div id="main">
+            <!-- Introduction -->
+            {{> Template.dynamic template=content}}
+        </div>
+
+        <!-- Footer -->
+        <footer id="footer">
+            <section>
+                <h2>Our Story</h2>
+                <p>In the 1970s, women in parts of Chicago decided to transform the way we were putting their lives on trial by criminalizing abortions in hospitals. In its place, was formed the <em>Jane Network</em>. Thousands of women received safe abortions from medical practitioners and their apprentices (usually called Midwives). This project is an attempt at reviving the Jane Network for women around the world so that they can get consensual and safe abortions absolutely anonymously.</p>
+                <!-- <ul class="actions">
+                    <li><a href="\bountyhunterattgid" class="button">Submit Ideas &amp; Bug Reports</a></li>
+                </ul> -->
+            </section>
+            <section>
+                <h2>Contact Us</h2>
+                <dl class="alt">
+                    <dt>Address</dt>
+                    <dd>Columbae &bull; 594 Lasuen Mall,
+                        <br> Stanford, CA 94305 &bull; USA</dd>
+                    <dt>Phone</dt>
+                    <dd>+1-650-785-9889 &bull; +91-880-089-6561</dd>
+                    <dt>Email</dt>
+                    <dd><a href="#" id="special">janeisus@stanford.edu</a></dd>
+                </dl>
+                <ul class="icons">
+                    <li><a href="https://facebook.com/tgid.co/" class="icon fa-facebook alt" target="_blank"><span class="label">Facebook</span></a></li>
+                    <li><a href="https://twitter.com/tgiddotco/" class="icon fa-twitter alt" target="_blank"><span class="label">Twitter</span></a></li>
+                    <li><a href="https://www.instagram.com/tgid.co/" class="icon fa-instagram alt" target="_blank"><span class="label">Instagram</span></a></li>
+                    <li><a href="https://medium.com/the-great-indian-dream/" class="icon fa-medium alt" target="_blank"><span class="label">Mail</span></a></li>
+                    <li><a href="https://thegreatindiandream.slack.com/" class="icon fa-slack alt" target="_blank"><span class="label">Slack</span></a></li>
+                </ul>
+            </section>
+            <p class="copyright"><a href="/" id="special" onclick="scroll(0,0)">Jane Network</a> &copy; 2018 &bull; <a href="/terms-and-conditions" onclick="scroll(0,0)">Terms &amp; Conditions</a> &bull;
+                <a href="/privacy-policy" onclick="scroll(0,0)">Privacy Policy</a>
+                <!-- <a href="/careers" onclick="scroll(0,0)">Careers</a> -->
+              </p>
+        </footer>
+    </div>
+    <!-- Scripts -->
+    <!-- <script src="/assets/js/jquery.min.js"></script> -->
+    <script src="/assets/js/jquery.scrollex.min.js"></script>
+    <script src="/assets/js/jquery.scrolly.min.js"></script>
+    <script src="/assets/js/skel.min.js"></script>
+    <script src="/assets/js/util.js"></script>
+    <!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
+    <!-- <script src="/assets/js/main.js"></script> -->
+  {{/unless}}
+</template>
